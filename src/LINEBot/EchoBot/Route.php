@@ -29,6 +29,12 @@ class Route
     public function register(\Slim\App $app)
     {
         $app->get('/demo', function() {
+            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+            $txt = "John Doe\n";
+            fwrite($myfile, $txt);
+            $txt = "Jane Doe\n";
+            fwrite($myfile, $txt);
+            fclose($myfile);
             return "Hello Demo";
         });
 
